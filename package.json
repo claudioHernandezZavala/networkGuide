@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "content": "python scripts/build_course_json.py",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",

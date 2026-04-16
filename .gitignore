@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Generated extraction scratch file (optional)
+scripts/extracted_raw.txt

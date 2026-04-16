@@ -4,41 +4,48 @@ import React, { useState } from "react";
 const studyData = [
   {
     id: "intro",
-    title: "Course Intro & Getting Started",
+    title: "Course Intro & Frameworks",
     sections: [
       {
         heading: "Cybersecurity Landscape & Workforce",
-        text: "The demand for cybersecurity professionals is growing rapidly, supported by government frameworks and international certifications.",
+        explanation:
+          "The cybersecurity field is experiencing massive growth. To organize this exploding industry, government agencies like NIST have created standardized frameworks (like NICE) to define exactly what tasks, skills, and knowledge are required for various security roles.",
         definitions: [
           {
             term: "Information Security Analyst",
             definition:
-              "A role whose growth is expected to be 29% from 2024 to 2034, much faster than average (U.S. Bureau of Labor Statistics).",
+              "A specific cybersecurity role whose job market growth is projected by the BLS to be 29% from 2024 to 2034, much faster than the average for all occupations.",
           },
           {
             term: "NICE Cybersecurity Workforce Framework",
             definition:
-              "National Initiative for Cybersecurity Education framework (NIST SP 800-181r1) providing an exhaustive list of cybersecurity work roles, tasks, knowledge, skills, and abilities.",
+              "National Initiative for Cybersecurity Education framework (NIST SP 800-181r1). It provides an exhaustive list of cybersecurity work roles, tasks, knowledge, skills, and abilities (TKSA).",
           },
           {
             term: "CISSP",
             definition:
-              "Certified Information Systems Security Professional. A popular certification from (ISC)2.",
+              "Certified Information Systems Security Professional. A highly popular and widely recognized certification from (ISC)2.",
           },
         ],
         examples: [
-          "Example: Using the NICE framework to identify the specific 'Skills' and 'Abilities' required for a network defense role.",
+          "Example: A hiring manager uses the NICE framework to write a job description, ensuring they ask for the correct 'Knowledge' and 'Skills' for a network defender.",
         ],
       },
     ],
     examTips: [
-      "Familiarize yourself with the NICE framework's breakdown: Tasks, Knowledge, Skills, and Abilities.",
-      "Remember the high growth rate (29%) for InfoSec analysts as a context for industry demand.",
+      "Remember the exceptionally high growth rate (29%) for Information Security Analysts.",
+      "Know the four pillars of the NICE framework: Tasks, Knowledge, Skills, and Abilities (TKSA).",
     ],
     chapterSummary: [
-      "The Bureau of Labor Statistics (BLS) projects massive growth in security fields.",
-      "NICE framework categorizes roles by Tasks, Knowledge, Skills, Abilities.",
-      "CISSP is a major industry certification.",
+      "Cybersecurity jobs are growing rapidly.",
+      "The NICE framework standardizes job roles and requirements.",
+      "CISSP is a premier industry certification.",
+    ],
+    quiz: [
+      {
+        q: "True or False: The NICE framework categorizes roles by Tasks, Knowledge, Skills, and Abilities.",
+        a: "True.",
+      },
     ],
   },
   {
@@ -46,105 +53,106 @@ const studyData = [
     title: "Internet Basics & Networking",
     sections: [
       {
-        heading: "Communications Paradigms",
-        text: "The fundamental ways data is routed through a network.",
+        heading: "Communications Paradigms & Protocols",
+        explanation:
+          "Before we can secure a network, we must understand how it sends data. The internet uses two main paradigms: one where a dedicated physical line is held open (Circuit), and another where data is chopped into pieces and sent over shared lines (Packet).",
         definitions: [
           {
             term: "Circuit Switching",
             definition:
-              "A communication mechanism establishing a dedicated path between a sender and receiver with guaranteed isolation from other paths (e.g., PSTN).",
+              "A communication mechanism that establishes a point-to-point path between a sender and receiver with guaranteed isolation from paths used by others (e.g., traditional PSTN phone lines).",
           },
           {
             term: "Packet Switching",
             definition:
-              "Data is broken into packets and sent over a shared network where paths are not dedicated.",
-          },
-        ],
-        examples: [
-          "Example (Circuit Switching): Placing a traditional phone call where the line is dedicated to the two parties until terminated.",
-        ],
-      },
-      {
-        heading: "Addressing & Protocols",
-        text: "Methods for identifying devices and defining communication rules.",
-        definitions: [
-          {
-            term: "Protocol Suite",
-            definition:
-              "A collection of protocols designed to work together, such as the TCP/IP 5-layer model.",
+              "A system where data is broken into blocks (packets) and sent over a shared network via statistical multiplexing. No set-up is required before communication begins.",
           },
           {
             term: "Header",
             definition:
-              "Information added to data as it passes down a layered model. It is removed as data passes up.",
+              "Information added to data as it passes down a layered model. It is removed as data passes up. Contains info like source/destination IPs and sequence numbers.",
           },
           {
             term: "Unicast",
             definition:
-              "Communication addressed to a single specific receiver.",
+              "Communication addressed to a single, specific receiver (1-to-1).",
           },
           {
             term: "Multicast",
             definition:
-              "Communication addressed to a specific group of receivers.",
+              "Communication addressed to a specific group of receivers (1-to-Many).",
           },
           {
             term: "Broadcast",
             definition:
-              "Communication addressed to all devices on a network segment.",
+              "Communication addressed to all devices on a specific network segment (1-to-All).",
+          },
+          {
+            term: "Anycast",
+            definition:
+              "Routing traffic to the nearest (or optimal) node in a group of potential receivers sharing the same IP address.",
           },
           {
             term: "DHCP",
             definition:
-              "Dynamic Host Configuration Protocol. Used to obtain basic configuration info (like an IP address). The requester broadcasts a DHCP DISCOVER packet containing its MAC address.",
+              "Dynamic Host Configuration Protocol. Used by a host to obtain an IP address. The requester broadcasts a DHCP DISCOVER packet including its MAC address.",
           },
           {
             term: "NAT Table",
             definition:
-              "Network Address Translation table. Uses port numbers as an index to map internal private IP addresses to an external public IP.",
+              "Network Address Translation table. Uses port numbers (ephemeral ports) as an index to map internal private IP addresses to an external public IP address.",
           },
-        ],
-        examples: [
-          "Example: A host joining a network broadcasts a DHCP DISCOVER packet to find a server and get an IP.",
-          "Example: A router uses a NAT table to translate an internal 10.0.0.1 IP to a public 150.210.155.146 IP.",
-        ],
-      },
-      {
-        heading: "Transport Layer Alternatives",
-        text: "The choice of transport protocol depends on application requirements.",
-        definitions: [
           {
             term: "TCP (Transmission Control Protocol)",
             definition:
-              "Reliable, connection-oriented protocol. Uses sequence numbers and flags to start/end sessions.",
+              "Reliable, connection-oriented transport protocol. Uses sequence numbers and flags to ensure all packets arrive in order.",
           },
           {
             term: "UDP (User Datagram Protocol)",
             definition:
-              "Unreliable, connectionless protocol. Less overhead, used for streaming.",
+              "Unreliable, connectionless transport protocol. Fast, with low overhead.",
           },
           {
             term: "IP (Internet Protocol)",
             definition:
-              "The network layer protocol. It is inherently unreliable (best-effort delivery).",
+              "The network layer protocol. It provides unreliable, best-effort delivery.",
+          },
+          {
+            term: "Ephemeral Port",
+            definition:
+              "A short-lived port assigned dynamically by the OS when a client application initiates a connection.",
           },
         ],
         examples: [
-          "Example: A streaming video application would use UDP because speed is more important than recovering every lost packet.",
-          "Example: Sequence numbers are found in the TCP header, while source IP addresses are found in the IP header.",
+          "Circuit Switching Example: A traditional landline phone call.",
+          "Packet Switching Example: Loading a web page or sending an email.",
         ],
       },
     ],
     examTips: [
-      "Differentiate Circuit (dedicated path, point-to-point) vs. Packet switching.",
-      "Know exactly what DHCP does: it broadcasts a DISCOVER packet using its MAC address.",
-      "TCP is for reliability; UDP is for speed/streaming. IP is an unreliable network layer.",
+      "Understand that IP is fundamentally unreliable. TCP adds reliability on top of it.",
+      "DHCP uses a BROADCAST to find a server because it doesn't have an IP address yet.",
+      "Headers are ADDED as data goes down the stack, and REMOVED as it goes up.",
     ],
     chapterSummary: [
-      "Circuit Switching establishes an isolated, point-to-point path (3 steps: establish, use, terminate).",
-      "Headers are added on the way down the TCP/IP stack and removed on the way up.",
-      "DHCP uses Broadcasts; NAT uses ports to map IPs.",
-      "Unicast (1:1), Multicast (1:Many), Broadcast (1:All).",
+      "Circuit Switching = Dedicated Path. Packet Switching = Shared Path.",
+      "Unicast (1:1), Multicast (1:Group), Broadcast (1:All), Anycast (1:Nearest).",
+      "TCP = Reliable; UDP = Unreliable/Fast.",
+      "NAT maps private IPs to public IPs using ephemeral port numbers.",
+    ],
+    quiz: [
+      {
+        q: "Which transport protocol would a streaming application most likely use, TCP or UDP?",
+        a: "UDP, because occasional dropped frames are preferred over pausing the stream to wait for delayed packets.",
+      },
+      {
+        q: "Fill in the blank: The network layer (IP) in the Internet is considered __________, meaning it offers 'best-effort' delivery without guarantees.",
+        a: "Unreliable.",
+      },
+      {
+        q: "Which header contains flags used to start and end a session?",
+        a: "The TCP header.",
+      },
     ],
   },
   {
@@ -152,69 +160,83 @@ const studyData = [
     title: "Chapter 1: Security Overview",
     sections: [
       {
-        heading: "The Core Concepts (CIA Triad)",
-        text: "The fundamental goals of computer security established by NIST (NISTIR 7298).",
+        heading: "The CIA Triad & Core Concepts",
+        explanation:
+          "The CIA Triad is the absolute foundation of all cybersecurity. Every security measure is designed to protect at least one of these three principles.",
         definitions: [
           {
             term: "Computer Security",
             definition:
-              "Measures and controls that ensure confidentiality, integrity, and availability of information processed and stored by a computer.",
+              "Measures and controls that ensure confidentiality, integrity, and availability of information processed and stored by a computer (NISTIR 7298).",
           },
           {
             term: "Confidentiality",
             definition:
-              "Preserving authorized restrictions on information access and disclosure, protecting personal privacy and proprietary info.",
+              "Preserving authorized restrictions on information access and disclosure. Protecting personal privacy and proprietary info.",
           },
           {
             term: "Integrity",
             definition:
-              "Guarding against improper information modification or destruction, ensuring information non-repudiation and authenticity.",
+              "Guarding against improper information modification or destruction. Ensures non-repudiation and authenticity.",
           },
           {
             term: "Availability",
             definition:
               "Ensuring timely and reliable access to and use of information.",
           },
-        ],
-        examples: [
-          "Example (Confidentiality): Encrypting a hard drive so stolen data cannot be read.",
-          "Example (Integrity): Using hash functions to verify a file hasn't been altered.",
-          "Example (Availability): Implementing backup servers to prevent a DoS attack from taking a system offline.",
-        ],
-      },
-      {
-        heading: "Assets, Threats, and Attacks",
-        text: "Understanding what we protect, how it is threatened, and how to counter it.",
-        definitions: [
           {
             term: "Assets",
             definition:
-              "Hardware, software, firmware, information data, and telecommunications that need protection.",
+              "Hardware, software, data, and telecommunications that require protection.",
+          },
+          {
+            term: "Vulnerability",
+            definition:
+              "A flaw or weakness in a system's design, implementation, or operation and management.",
+          },
+          {
+            term: "Threat",
+            definition:
+              "A potential for violation of security, which exists when there is a circumstance, capability, action, or event that could breach security.",
           },
           {
             term: "Attack Surface",
             definition:
-              "The total sum of vulnerabilities that can be exploited in a given system.",
+              "The total sum of all the vulnerabilities that can be exploited in a given system.",
           },
           {
             term: "Attack Tree",
             definition:
-              "A conceptual diagram showing how an asset, or target, might be attacked.",
+              "A conceptual branching diagram showing how an asset, or target, might be systematically attacked.",
+          },
+          {
+            term: "CVE",
+            definition:
+              "Common Vulnerabilities and Exposures. A dictionary/list of publicly known cybersecurity vulnerabilities.",
           },
         ],
         examples: [
-          "Example: Closing unused network ports reduces the system's attack surface.",
+          "Example: A misconfigured firewall is a Vulnerability. A hacker represents a Threat. The hacker exploiting the firewall is an Attack.",
         ],
       },
     ],
     examTips: [
-      "Memorize the exact definitions of the CIA Triad (Confidentiality, Integrity, Availability). It is the foundation of the course.",
-      "Be prepared to classify an incident. If data is changed without authorization, it's an Integrity loss.",
+      "Memorize the exact definitions of the CIA Triad. You will likely be asked to categorize an attack into one of the three.",
+      "Understand the relationship: Threats exploit Vulnerabilities to compromise Assets.",
     ],
     chapterSummary: [
-      "Computer Security ensures CIA: Confidentiality, Integrity, Availability.",
-      "Security strategy requires understanding Assets, Threats, and Attacks.",
-      "Focus is on three questions: What assets to protect? How are they threatened? How do we counter threats?",
+      "CIA Triad: Confidentiality, Integrity, Availability.",
+      "Security Strategy: 1) What assets to protect? 2) How are they threatened? 3) How do we counter the threats?",
+    ],
+    quiz: [
+      {
+        q: "True or False: If a student illicitly alters their grades in the school's database, it is primarily a breach of Confidentiality.",
+        a: "False. It is a breach of Integrity (unauthorized modification).",
+      },
+      {
+        q: "Fill in the blank: The total sum of all the vulnerabilities that can be exploited in a given system is called the _________ _________.",
+        a: "Attack Surface.",
+      },
     ],
   },
   {
@@ -223,67 +245,67 @@ const studyData = [
     sections: [
       {
         heading: "Encryption Algorithms",
-        text: "Methods for providing confidentiality for transmitted or stored data.",
+        explanation:
+          "Encryption transforms readable data into ciphertext to guarantee Confidentiality. Symmetric encryption is fast but requires sharing a secret key. Asymmetric encryption uses a public/private key pair.",
         definitions: [
           {
             term: "Symmetric Encryption",
             definition:
-              "Also called conventional or single-key encryption. Both sender and receiver use the same key. Requires a strong algorithm and a securely shared key.",
+              "Both sender and receiver use the exact same key to encrypt and decrypt data. Fast, but hard to share keys securely.",
           },
           {
             term: "Public-Key (Asymmetric) Encryption",
             definition:
-              "Uses two keys (public and private). Invented by Whitfield Diffie and Martin Hellman.",
+              "Uses a public key (shared) and a private key (secret). Invented by Diffie and Hellman.",
+          },
+          {
+            term: "Block Cipher",
+            definition: "Encrypts data in fixed-size blocks (e.g., AES).",
           },
           {
             term: "Stream Cipher",
             definition:
-              "An encryption algorithm that encrypts data one bit or byte at a time.",
+              "Encrypts data continuously, one bit or byte at a time.",
           },
-          {
-            term: "Block Cipher",
-            definition:
-              "An encryption algorithm that encrypts data in fixed-size blocks.",
-          },
-        ],
-        examples: [
-          "Example (Asymmetric): Alice encrypts a message with Bob's Public Key. Only Bob's Private Key can decrypt it.",
-        ],
-      },
-      {
-        heading: "Authentication and Integrity",
-        text: "Tools used to prove identity and ensure data has not been altered.",
-        definitions: [
           {
             term: "Hash Function",
             definition:
-              "An algorithm that takes arbitrary data and produces a fixed-size string. Used for message authentication. A secure hash is computationally infeasible to reverse.",
+              "A one-way algorithm mapping arbitrary data to a fixed-size bit string (message digest). Provides Integrity, not Confidentiality.",
           },
           {
             term: "Digital Signature",
             definition:
-              "A mechanism that uses public-key cryptography to authenticate the sender of a message and ensure non-repudiation.",
+              "Uses public-key cryptography to authenticate the sender and ensure non-repudiation.",
           },
           {
-            term: "Digital Envelope",
+            term: "Entropy",
             definition:
-              "A technique that uses asymmetric encryption to securely transmit a symmetric key.",
+              "A measure of the randomness or unpredictability of data, crucial for generating strong cryptographic keys.",
           },
         ],
         examples: [
-          "Example: A file is downloaded along with its hash value. If computing the downloaded file's hash yields the same value, the file's integrity is verified.",
+          "Asymmetric Example: Alice encrypts a message with Bob's Public Key. Only Bob's Private Key can decrypt it.",
         ],
       },
     ],
     examTips: [
-      "Symmetric = Single Key (Fast, hard to share). Asymmetric = Two Keys (Public/Private).",
-      "Understand the inventors of Public Key crypto: Diffie and Hellman.",
-      "Hash functions are one-way and provide Integrity, not Confidentiality.",
+      "Symmetric = 1 Key, Fast. Asymmetric = 2 Keys, Slow.",
+      "Hash functions are ONE-WAY. They cannot be decrypted.",
+      "Know Diffie and Hellman as the inventors of public-key cryptography.",
     ],
     chapterSummary: [
-      "Symmetric encryption is the universal technique for providing confidentiality.",
-      "Public-key systems require that it is computationally infeasible to determine the private key from the public key.",
-      "Hash functions and digital signatures are critical for message authentication.",
+      "Symmetric encryption requires a securely shared key.",
+      "Public-key relies on the mathematical impossibility of deriving the private key from the public key.",
+    ],
+    quiz: [
+      {
+        q: "Does a Hash Function provide Confidentiality or Integrity?",
+        a: "Integrity. It proves the data hasn't changed, but it does not hide the original data.",
+      },
+      {
+        q: "Who are credited as the inventors of Public-Key Cryptography?",
+        a: "Whitfield Diffie and Martin E. Hellman.",
+      },
     ],
   },
   {
@@ -291,67 +313,63 @@ const studyData = [
     title: "Chapter 3: User Authentication",
     sections: [
       {
-        heading: "Identity and Authentication",
-        text: "The process of proving who you are to a computer system (NIST SP 800-63-3).",
+        heading: "Identity and Verification",
+        explanation:
+          "Authentication is the gateway to access control. It verifies you are who you claim to be.",
         definitions: [
           {
-            term: "Digital Identity",
-            definition:
-              "A unique representation of a subject engaged in an online transaction.",
-          },
-          {
             term: "Identification",
-            definition: "Identifying information system users or processes.",
+            definition:
+              "The process of identifying users (e.g., providing a username).",
           },
           {
             term: "Authentication",
             definition:
-              "Verifying the identities of users or processes as a prerequisite to allowing access.",
+              "Verifying the identities of users (e.g., providing a password).",
           },
           {
-            term: "Multifactor Authentication",
+            term: "Multifactor Authentication (MFA)",
             definition:
-              "Using two or more different methods to authenticate (e.g., a password and a hardware token).",
+              "Using two or more different factors to authenticate (Knowledge, Possession, Inherence).",
           },
-        ],
-        examples: [
-          "Example: Entering a username is Identification. Entering the correct password is Authentication.",
-        ],
-      },
-      {
-        heading: "Authentication Methods",
-        text: "The different categories of credentials used to authenticate users.",
-        definitions: [
           {
             term: "Password-based Authentication",
             definition:
-              "Authentication using a secret memorized string. Vulnerable to cracking; requires hashed storage.",
+              "Authenticating via a memorized secret. Must be hashed, not stored in plaintext.",
           },
           {
             term: "Token-based Authentication",
             definition:
-              "Authentication using a physical device like a memory card, smart card, or hardware token.",
+              "Authenticating using a physical device like a smart card or hardware token.",
           },
           {
             term: "Biometric Authentication",
             definition:
-              "Authentication using physical characteristics (e.g., an iris biometric system or fingerprint).",
+              "Authenticating using physical characteristics like fingerprints or iris scans.",
           },
         ],
         examples: [
-          "Example: A user logs into an ATM using a Token (the ATM card) and a Password/PIN.",
+          "Identification: Swiping a bank card (claims identity). Authentication: Entering the PIN (proves identity).",
         ],
       },
     ],
     examTips: [
-      "Distinguish between Identification (who you claim to be) and Authentication (proving it).",
-      "Understand the derived security requirement: systems must use multifactor authentication for privileged accounts.",
-      "Passwords must never be stored in plain text; they must be hashed.",
+      "Be able to distinguish between Identification (the claim) and Authentication (the proof).",
+      "Know the three factors: Knowledge (password), Possession (token), Inherence (biometric).",
     ],
     chapterSummary: [
-      "Digital identity uniquely represents a subject online.",
-      "NIST requires multifactor authentication and replay-resistant mechanisms.",
-      "Authentication types: Passwords (something you know), Tokens (something you have), Biometrics (something you are).",
+      "NIST explicitly requires MFA for privileged accounts.",
+      "Passwords must be hashed and ideally salted to prevent cracking.",
+    ],
+    quiz: [
+      {
+        q: "Using an RSA SecurID fob to log in is an example of which authentication factor?",
+        a: "Something you have (Possession / Token-based).",
+      },
+      {
+        q: "True or False: According to NIST derived security requirements, Multifactor Authentication is optional for local access to privileged accounts.",
+        a: "False. It is required for privileged accounts.",
+      },
     ],
   },
   {
@@ -359,83 +377,109 @@ const studyData = [
     title: "Chapter 6: Malicious Software (Malware)",
     sections: [
       {
-        heading: "Malware Fundamentals",
-        text: "Software designed to exploit vulnerabilities and damage systems.",
-        definitions: [
-          {
-            term: "Malware",
-            definition:
-              "A program inserted covertly with the intent of compromising CIA or annoying the victim (NIST 800-83).",
-          },
-          {
-            term: "Advanced Persistent Threat (APT)",
-            definition:
-              "Cybercrime directed at specific business/political targets over an extended period, often state-sponsored.",
-          },
-          {
-            term: "Attack Kit",
-            definition:
-              "Set of tools for generating new malware automatically using supplied payloads.",
-          },
-          {
-            term: "Adware",
-            definition:
-              "Advertising integrated into software, often causing pop-ups or browser redirection.",
-          },
-        ],
-        examples: [
-          "Example: The Morris Worm was an early, famous worm that propagated automatically across networks.",
-        ],
-      },
-      {
-        heading: "Types of Malware payloads & Propagation",
-        text: "How malware spreads and what it does once inside a system.",
+        heading: "Malware Types & Terminology",
+        explanation:
+          "Malware is any software designed to compromise CIA. It has propagation methods (how it spreads) and payloads (what it does).",
         definitions: [
           {
             term: "Virus",
             definition:
-              "Malware that infects content (like macro/scripting viruses) and requires user action to spread.",
+              "Malware that infects other files and requires user action (like opening an attachment) to spread.",
           },
           {
             term: "Worm",
             definition:
-              "Malware that propagates automatically by exploiting vulnerabilities, discovering targets on its own.",
+              "Malware that propagates automatically across networks by exploiting vulnerabilities. No host file needed.",
           },
           {
             term: "Trojan Horse",
             definition:
-              "Malware disguised as legitimate software. Often propagates via social engineering.",
+              "Malware disguised as legitimate software to trick users into installing it.",
           },
           {
             term: "Logic Bomb",
             definition:
-              "A payload that executes only when a specific condition or date is met.",
+              "A destructive payload that lies dormant until a specific condition (date/event) is triggered.",
           },
           {
-            term: "Ransomware",
+            term: "Advanced Persistent Threat (APT)",
             definition:
-              "Payload that encrypts or locks data, demanding payment (often as Ransomware-as-a-Service).",
+              "Highly sophisticated, stealthy hacking processes, often state-sponsored, directed at specific targets.",
           },
           {
-            term: "Keylogger / Spyware",
+            term: "Blended Attack",
             definition:
-              "Malware whose payload is information theft, capturing keystrokes or system data.",
+              "An attack that uses multiple methods of infection or propagation simultaneously (e.g., combining a virus, worm, and Trojan).",
+          },
+          {
+            term: "Zero-Day Exploit",
+            definition:
+              "An attack that exploits a previously unknown vulnerability, meaning developers have had 'zero days' to fix it.",
+          },
+          {
+            term: "Rootkit",
+            definition:
+              "Stealth malware designed to hide its presence and maintain deep, privileged (root) access.",
+          },
+          {
+            term: "Drive-by-Download",
+            definition:
+              "Infection occurring simply by visiting a compromised website, without clicking anything.",
+          },
+          {
+            term: "Watering Hole Attack",
+            definition:
+              "Targeting a specific group by infecting a website they are known to visit frequently.",
+          },
+          {
+            term: "Clickjacking",
+            definition:
+              "Tricking a user into clicking on a transparent, overlaid webpage element.",
+          },
+          {
+            term: "SCADA",
+            definition:
+              "Supervisory Control and Data Acquisition. Industrial control systems (like power grids) targeted by specialized malware like Stuxnet.",
+          },
+          {
+            term: "Out-of-band Attack",
+            definition:
+              "An attack delivered through a secondary, often non-network channel (e.g., dropping infected USB drives in a parking lot).",
+          },
+          {
+            term: "Air-gapped",
+            definition:
+              "A network physically isolated from unsecured networks (like the internet). Often targeted by out-of-band attacks.",
           },
         ],
         examples: [
-          "Example: Drive-by-downloads infect a user simply by visiting a compromised website, requiring no click.",
+          "Worm Example: The Morris Worm (1988) spread automatically.",
+          "Stuxnet: A highly advanced worm designed to sabotage Iran's air-gapped SCADA nuclear centrifuges via infected USBs.",
         ],
       },
     ],
     examTips: [
-      "Know the difference between a Virus (needs a host file/user action) and a Worm (self-propagating).",
-      "Understand that APTs (Advanced Persistent Threats) are highly sophisticated, patient, and usually state-funded.",
-      "Hardware can be malicious too! (e.g., NSA's modified USB devices or tiny radio transmitters).",
+      "Crucial distinction: A Virus requires a host/user interaction. A Worm is standalone and self-propagating.",
+      "Understand the term 'Air-gapped' and how Stuxnet used Out-of-Band (USB drives) to cross it.",
     ],
     chapterSummary: [
-      "Malware compromises Confidentiality, Integrity, or Availability.",
-      "Propagation methods: Infected content (Viruses), Vulnerability exploit (Worms), Social Engineering (Trojans).",
-      "Payloads include system corruption, data destruction, ransomware, info theft (keyloggers), and stealthing (rootkits).",
+      "Viruses infect files; Worms exploit networks automatically; Trojans trick users.",
+      "Blended attacks mix techniques.",
+      "Zero-days exploit unknown vulnerabilities.",
+    ],
+    quiz: [
+      {
+        q: "Multiple Choice: Which type of malware propagates automatically without requiring a host file or user interaction? A) Virus, B) Trojan, C) Worm, D) Logic Bomb",
+        a: "C) Worm.",
+      },
+      {
+        q: "Fill in the blank: An attack that exploits a vulnerability that the software vendor does not yet know about is called a __________ exploit.",
+        a: "Zero-day.",
+      },
+      {
+        q: "What is the term for a highly secure network that is physically disconnected from the internet?",
+        a: "Air-gapped.",
+      },
     ],
   },
   {
@@ -443,13 +487,19 @@ const studyData = [
     title: "Chapter 7: Denial-of-Service Attacks",
     sections: [
       {
-        heading: "Understanding DoS",
-        text: "Attacks targeting the Availability of systems.",
+        heading: "Availability Under Attack",
+        explanation:
+          "DoS attacks target the 'Availability' pillar by exhausting resources (bandwidth, memory, CPU).",
         definitions: [
           {
             term: "Denial-of-Service (DoS)",
             definition:
-              "An action that prevents or impairs the authorized use of networks, systems, or applications by exhausting resources (CPU, memory, bandwidth, threads) (NIST definition).",
+              "Action that prevents authorized use of networks/systems by exhausting CPU, memory, bandwidth, or disk space.",
+          },
+          {
+            term: "DDoS",
+            definition:
+              "A massive DoS attack launched from multiple, distributed compromised systems (botnet).",
           },
           {
             term: "Source Address Spoofing",
@@ -457,58 +507,44 @@ const studyData = [
               "Forging the source IP address in a packet to hide the attacker's identity or redirect responses.",
           },
           {
-            term: "Distributed DoS (DDoS)",
+            term: "TCP SYN Flood",
             definition:
-              "A DoS attack launched from multiple, distributed compromised systems (zombies/bots) simultaneously.",
+              "Sending endless spoofed TCP SYN requests. The server allocates memory for 'half-open' connections until exhaustion.",
+          },
+          {
+            term: "Reflection/Amplification Attack",
+            definition:
+              "Sending a small request to a third-party server with a spoofed victim IP. The third-party server sends a massive response to the victim.",
+          },
+          {
+            term: "DNS Amplification",
+            definition:
+              "A specific reflection attack exploiting DNS responses to overwhelm a target.",
           },
         ],
         examples: [
-          "Example: Exhausting threads in a thread pool. Even if threads are just blocked waiting, the server runs out of capacity.",
-        ],
-      },
-      {
-        heading: "Types of Flooding Attacks",
-        text: "Specific techniques used to overwhelm a target.",
-        definitions: [
-          {
-            term: "SYN Spoofing / TCP SYN Flood",
-            definition:
-              "Sending a massive amount of TCP SYN requests. The server allocates memory for half-open connections until it crashes.",
-          },
-          {
-            term: "ICMP Flood",
-            definition:
-              "Overwhelming a target with ICMP Echo Request (ping) packets.",
-          },
-          {
-            term: "UDP Flood",
-            definition:
-              "Overwhelming a target with UDP traffic to random ports.",
-          },
-          {
-            term: "Amplification / Reflection Attack",
-            definition:
-              "Sending requests to third-party servers with a spoofed source address of the victim, causing the third-party to flood the victim with large responses (e.g., DNS amplification).",
-          },
-          {
-            term: "Cyberslam (Application Attack)",
-            definition:
-              "Sending valid but highly complex requests to an application, causing it to consume massive CPU/Database resources.",
-          },
-        ],
-        examples: [
-          "Example: A DNS Amplification attack sends a small 60-byte request to a DNS server, which then sends a 3000-byte response to the spoofed victim's IP address.",
+          "DNS Amplification Example: Attacker sends a 60-byte DNS query spoofed as the victim. DNS server replies to the victim with a 3000-byte response.",
         ],
       },
     ],
     examTips: [
-      "Remember that DoS doesn't just attack bandwidth; it can attack memory, CPU, or application resources (like thread pools).",
-      "Understand the mechanics of a Reflection/Amplification attack: relying on a spoofed source IP and a third-party server.",
+      "DoS isn't just about 'clogging the pipe' (bandwidth). It can target system memory (SYN flood) or application CPU.",
+      "Understand Amplification: It requires Source Address Spoofing and an exploitable third-party protocol (like DNS).",
     ],
     chapterSummary: [
-      "DoS attacks exhaust resources to destroy Availability.",
-      "Network bandwidth, System resources, and Application resources are the main targets.",
-      "Defenses require upstream ISP cooperation or mitigation services (Akamai, CloudFlare).",
+      "DoS destroys Availability.",
+      "DDoS uses botnets.",
+      "SYN Floods target memory tables by leaving connections half-open.",
+    ],
+    quiz: [
+      {
+        q: "True or False: A TCP SYN flood primarily attacks a network's bandwidth capacity.",
+        a: "False. It primarily attacks system memory resources (connection tables).",
+      },
+      {
+        q: "What technique must an attacker use for a Reflection/Amplification attack to work against a victim?",
+        a: "Source Address Spoofing (forging the victim's IP as the source).",
+      },
     ],
   },
   {
@@ -516,73 +552,83 @@ const studyData = [
     title: "Chapter 8: Intrusion Detection",
     sections: [
       {
-        heading: "Intruders and Intrusion Detection",
-        text: "Identifying unauthorized activity in a network.",
+        heading: "Detection Methodologies & Sensors",
+        explanation:
+          "Intrusion Detection Systems (IDS) catch hackers who slip past firewalls. They look for known bad things (Signatures) or abnormal behavior (Anomalies).",
         definitions: [
-          {
-            term: "Cyber Criminals",
-            definition:
-              "Individuals or groups motivated by financial reward (identity theft, data ransoming). Often operate on the Dark Web.",
-          },
           {
             term: "Intrusion Detection System (IDS)",
             definition:
-              "Hardware or software that monitors a network or system for malicious activity or policy violations.",
+              "Hardware or software monitoring a network/system for malicious activity. Composed of sensors, analyzers, and UI.",
           },
           {
             term: "Base-Rate Fallacy",
             definition:
-              "A statistical flaw in IDS where an extremely small percentage of actual attacks leads to a massive amount of false positives, overwhelming analysts.",
-          },
-          {
-            term: "Honeypot",
-            definition:
-              "Decoy systems designed to lure attackers away from critical systems and gather intelligence on their methods.",
-          },
-        ],
-        examples: [
-          "Example: DARPA continually attempts to automate the search for vulnerabilities, exploiting them, and defending against the exploit.",
-        ],
-      },
-      {
-        heading: "Detection Methodologies",
-        text: "How an IDS actually spots an attack.",
-        definitions: [
-          {
-            term: "Anomaly Detection",
-            definition:
-              "Establishing a baseline of normal behavior and flagging any activity that significantly deviates from that baseline.",
+              "A statistical flaw: because actual attacks are rare, even a 1% false positive rate generates an overwhelming number of false alarms.",
           },
           {
             term: "Signature / Heuristic Detection",
             definition:
-              "Comparing observed network traffic or system logs against a database of known attack patterns (signatures).",
+              "Comparing observed traffic against a database of known attack patterns. Highly accurate for known threats, fails on zero-days.",
+          },
+          {
+            term: "Anomaly Detection",
+            definition:
+              "Establishing a baseline of 'normal' behavior and flagging deviations.",
           },
           {
             term: "Host-Based IDS (HIDS)",
             definition:
-              "Monitors the characteristics of a single host and the events occurring within that host.",
+              "A sensor monitoring the internal characteristics and events of a single computer.",
           },
           {
             term: "Network-Based IDS (NIDS)",
             definition:
-              "Monitors network traffic for particular network segments or devices.",
+              "A sensor monitoring network traffic passing through specific network segments. Includes inline (blocks) and passive (monitors) sensors.",
+          },
+          {
+            term: "Promiscuous Mode",
+            definition:
+              "A network interface controller mode allowing a sensor (like NIDS) to read all traffic passing on the network, not just traffic addressed to it.",
+          },
+          {
+            term: "Honeypot",
+            definition:
+              "Decoy systems designed to lure attackers away from critical assets and gather intelligence.",
+          },
+          {
+            term: "SNORT / Tripwire",
+            definition:
+              "Snort is a famous open-source NIDS. Tripwire is a famous file-integrity checking HIDS.",
           },
         ],
         examples: [
-          "Example: Anomaly detection might flag a user logging in at 3:00 AM if they normally only log in between 9 AM and 5 PM.",
+          "Quote: 'You can't defend. You can't prevent. The only thing you can do is detect and respond.' - Bruce Schneier",
         ],
       },
     ],
     examTips: [
-      "Quote to remember: 'You can't defend. You can't prevent. The only thing you can do is detect and respond.' - Bruce Schneier",
-      "Understand the difference between Signature (known bad patterns) and Anomaly (abnormal behavior) detection.",
+      "Signature = Known bad. Anomaly = Deviates from baseline.",
+      "Understand the Base-Rate Fallacy: it causes alert fatigue due to massive false positives.",
     ],
     chapterSummary: [
-      "Cyber criminals seek financial reward and trade tips on underground forums.",
-      "IDS relies on Anomaly detection or Signature/Heuristic detection.",
-      "HIDS protects a single machine; NIDS monitors network-wide traffic.",
-      "Honeypots distract attackers and generate threat intel.",
+      "IDS is essential because prevention eventually fails.",
+      "HIDS protects a host; NIDS protects the network pipe.",
+      "Promiscuous mode allows NIDS to see all network traffic.",
+    ],
+    quiz: [
+      {
+        q: "Which IDS analysis approach would be most effective at catching a brand-new zero-day exploit: Signature detection or Anomaly detection?",
+        a: "Anomaly detection, because there is no known signature for a zero-day.",
+      },
+      {
+        q: "Fill in the blank: The statistical issue where a small percentage of false positives overwhelms analysts because the actual number of attacks is very low is called the __________ __________.",
+        a: "Base-Rate Fallacy.",
+      },
+      {
+        q: "What mode must a network card be put into for a NIDS to monitor all traffic on a segment?",
+        a: "Promiscuous Mode.",
+      },
     ],
   },
   {
@@ -590,82 +636,74 @@ const studyData = [
     title: "Chapter 9: Firewalls and IPS",
     sections: [
       {
-        heading: "Firewall Fundamentals",
-        text: "The primary perimeter defense mechanism.",
+        heading: "Perimeter Defense & 'Defense in Depth'",
+        explanation:
+          "Firewalls are the primary perimeter defense, enforcing an access policy based on rules. Implementing multiple layers of security is known as 'Defense in Depth'.",
         definitions: [
-          {
-            term: "Firewall",
-            definition:
-              "A hardware or software choke point inserted between networks to establish a controlled link, imposing security and auditing.",
-          },
           {
             term: "Firewall Access Policy",
             definition:
-              "A critical list of the types of traffic authorized to pass, based on addresses, protocols, applications, and content.",
+              "The list of rules specifying which traffic is authorized to pass, based on addresses, ports, and protocols.",
           },
-          {
-            term: "Bastion Host",
-            definition:
-              "A special purpose computer on a network specifically designed and configured to withstand attacks, often hosting the firewall.",
-          },
-          {
-            term: "Unified Threat Management (UTM)",
-            definition:
-              "A single device that combines firewall, IPS, anti-virus, and other security features.",
-          },
-        ],
-        examples: [
-          "Example: All traffic from inside to outside, and vice versa, must pass through the firewall. Only authorized traffic passes.",
-        ],
-      },
-      {
-        heading: "Firewall Types & Actions",
-        text: "Different firewall technologies operate at different layers.",
-        definitions: [
           {
             term: "Packet Filtering Firewall",
             definition:
-              "Examines each IP packet independently and makes decisions based on header information (IP, port).",
+              "Examines each IP packet independently based on header information (IP, port). Fast but easily fooled (e.g., by TCP fragment attacks).",
           },
           {
             term: "Stateful Inspection Firewall",
             definition:
-              "Keeps track of the state of active connections and makes decisions based on the context of the traffic flow.",
+              "Keeps track of the state of active TCP connections. Knows if a packet is part of an established flow.",
           },
           {
-            term: "Application-Level Gateway (ALG)",
+            term: "Application-Level Proxy",
             definition:
-              "Also known as a proxy. Acts as a relay of application-level traffic, deeply inspecting the payload.",
+              "Acts as a relay for application-level traffic (HTTP), deeply inspecting the payload.",
           },
           {
-            term: "Drop Action",
+            term: "Bastion Host",
             definition:
-              "The firewall rejects a packet based on rules and logs the result.",
+              "A highly secure, hardened computer designed to withstand attacks, often hosting the firewall.",
           },
           {
-            term: "Reject Action",
+            term: "DMZ (Demilitarized Zone)",
             definition:
-              "The packet is rejected, logged, and an error message is returned to the sender (e.g., TCP Reset).",
+              "A subnetwork that contains and exposes an organization's external-facing services to the internet, separated from the internal network.",
           },
           {
-            term: "Sdrop Action",
-            definition: "The packet is rejected but NOT logged (stealth drop).",
+            term: "Unified Threat Management (UTM)",
+            definition:
+              "A single appliance combining firewall, IPS, anti-virus, VPN, and other features.",
+          },
+          {
+            term: "Raw Socket",
+            definition:
+              "A socket that allows direct access to lower-layer protocols (bypassing the OS TCP/IP stack), often used by attackers to craft custom malicious packets.",
           },
         ],
         examples: [
-          "Example: A stealth scan might attempt to provoke a TCP Reset. A firewall configured to simply 'Drop' instead of 'Reject' prevents giving the attacker information.",
+          "Firewall Design Goals: 1) All traffic must pass through it. 2) Only authorized traffic passes. 3) The firewall itself is immune to penetration.",
         ],
       },
     ],
     examTips: [
-      "Know the three design goals of a firewall: 1) All traffic passes through it. 2) Only authorized traffic passes. 3) The firewall itself is immune to penetration.",
-      "Understand the difference between Drop (log but no reply), Reject (log + send error), and Sdrop (no log, no reply).",
+      "Know the types of firewalls: Packet Filtering (dumb, fast), Stateful (tracks connections), Application Proxy (deep inspection, slow).",
+      "Understand the purpose of a DMZ: to host public-facing servers (like web servers) outside the protected internal LAN.",
     ],
     chapterSummary: [
-      "Firewalls act as a single choke point between the internal network and the internet.",
-      "Access policy is built from risk assessments.",
-      "Firewall types: Packet filtering, Stateful inspection, Application-level gateways, Circuit-level gateways.",
-      "Note: NSA has implemented persistent backdoors for virtually all firewalls (Snowden leak).",
+      "Firewalls enforce access policy at a choke point.",
+      "Defense in Depth relies on multiple layers (Firewall -> IPS -> HIDS).",
+      "Packet filters are vulnerable to TCP fragmentation attacks.",
+    ],
+    quiz: [
+      {
+        q: "Multiple Choice: Which type of firewall keeps track of active connections to ensure incoming packets are part of a legitimate established session? A) Packet Filtering, B) Application Proxy, C) Stateful Inspection",
+        a: "C) Stateful Inspection.",
+      },
+      {
+        q: "What is the term for a highly hardened computer specifically designed to withstand attacks, often placed on the network perimeter?",
+        a: "Bastion Host.",
+      },
     ],
   },
 ];
@@ -674,45 +712,59 @@ const studyData = [
 export default function StudyGuideApp() {
   const [activeChapterId, setActiveChapterId] = useState(studyData[0].id);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [revealedAnswers, setRevealedAnswers] = useState({});
 
   const activeChapter = studyData.find((ch) => ch.id === activeChapterId);
 
+  const toggleAnswer = (chapterId, qIndex) => {
+    setRevealedAnswers((prev) => ({
+      ...prev,
+      [`${chapterId}-${qIndex}`]: !prev[`${chapterId}-${qIndex}`],
+    }));
+  };
+
   return (
-    <div className="flex h-screen bg-gray-100 font-sans text-gray-800">
-      {/* SIDEBAR NAVIGATION */}
+    <div className="flex h-screen bg-[#faf8f5] font-sans text-stone-800">
+      {/* SIDEBAR NAVIGATION - Espresso Theme */}
       <div
-        className={`bg-slate-900 text-white transition-all duration-300 flex flex-col shadow-xl ${isSidebarOpen ? "w-72" : "w-16"}`}
+        className={`bg-[#3e2723] text-stone-200 transition-all duration-300 flex flex-col shadow-2xl z-10 ${isSidebarOpen ? "w-72" : "w-16"}`}
       >
-        <div className="p-4 flex items-center justify-between border-b border-slate-700 bg-slate-950">
+        <div className="p-4 flex items-center justify-between border-b border-[#5d4037] bg-[#271816]">
           {isSidebarOpen && (
-            <h1 className="font-extrabold text-lg tracking-wide text-blue-400">
-              CSCI 493.75 Midterm
+            <h1 className="font-extrabold text-lg tracking-wide text-[#d7ccc8]">
+              ☕ Midterm Prep
             </h1>
           )}
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="p-2 bg-slate-800 rounded hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="p-2 bg-[#4e342e] rounded hover:bg-[#5d4037] transition-colors focus:outline-none focus:ring-2 focus:ring-[#8d6e63]"
             title={isSidebarOpen ? "Collapse Sidebar" : "Expand Sidebar"}
           >
             {isSidebarOpen ? "◀" : "▶"}
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto custom-scrollbar">
           <ul className="py-4 space-y-1">
             {studyData.map((chapter) => (
               <li key={chapter.id}>
                 <button
-                  onClick={() => setActiveChapterId(chapter.id)}
+                  onClick={() => {
+                    setActiveChapterId(chapter.id);
+                    // Reset quiz answers when switching chapters
+                    setRevealedAnswers({});
+                  }}
                   className={`w-full text-left px-4 py-3 transition-all duration-200 
                     ${
                       activeChapterId === chapter.id
-                        ? "bg-blue-600 text-white border-l-4 border-blue-300 shadow-md"
-                        : "text-slate-300 hover:bg-slate-800 hover:text-white"
+                        ? "bg-[#5d4037] text-white border-l-4 border-[#d7ccc8] shadow-md"
+                        : "text-stone-400 hover:bg-[#4e342e] hover:text-stone-200"
                     }`}
                 >
                   {isSidebarOpen ? (
-                    <span className="font-medium">{chapter.title}</span>
+                    <span className="font-medium text-[15px]">
+                      {chapter.title}
+                    </span>
                   ) : (
                     <span className="font-bold text-xs uppercase text-center block w-full">
                       {chapter.id.substring(0, 3)}
@@ -726,44 +778,51 @@ export default function StudyGuideApp() {
       </div>
 
       {/* MAIN CONTENT AREA */}
-      <div className="flex-1 overflow-y-auto bg-white relative">
+      <div className="flex-1 overflow-y-auto relative bg-[#faf8f5]">
         <div className="max-w-5xl mx-auto p-8 md:p-12 min-h-screen pb-32">
           {/* Chapter Header */}
-          <div className="mb-10 border-b-4 border-blue-900 pb-6">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+          <div className="mb-10 border-b-4 border-[#5d4037] pb-6">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-[#3e2723] tracking-tight">
               {activeChapter.title}
             </h1>
           </div>
 
           {/* Sections Loop */}
-          <div className="space-y-12">
+          <div className="space-y-16">
             {activeChapter.sections.map((sec, idx) => (
               <section key={idx} className="space-y-6">
-                {/* Section Heading & Text */}
-                <div>
-                  <h2 className="text-3xl font-bold text-blue-800 border-b-2 border-slate-100 pb-2 mb-4">
-                    {sec.heading}
-                  </h2>
-                  <p className="text-slate-700 text-lg leading-relaxed">
-                    {sec.text}
-                  </p>
-                </div>
+                {/* Section Heading */}
+                <h2 className="text-3xl font-bold text-[#4e342e] border-b-2 border-[#d7ccc8] pb-2 mb-4">
+                  {sec.heading}
+                </h2>
 
-                {/* DEFINITIONS (Serif Font) */}
+                {/* MEDIUM EXPLANATION (Cappuccino Box) */}
+                {sec.explanation && (
+                  <div className="bg-[#f5f0e6] border-l-4 border-[#8d6e63] p-5 rounded-r-lg shadow-sm">
+                    <h3 className="text-sm font-bold uppercase tracking-widest text-[#8d6e63] mb-2 flex items-center">
+                      <span className="mr-2">📝</span> Concept Overview
+                    </h3>
+                    <p className="text-[#5d4037] text-lg leading-relaxed font-medium">
+                      {sec.explanation}
+                    </p>
+                  </div>
+                )}
+
+                {/* DEFINITIONS (Warm Latte / Serif Font) */}
                 {sec.definitions && sec.definitions.length > 0 && (
-                  <div className="bg-amber-50 p-6 md:p-8 rounded-xl shadow-sm border border-amber-200">
-                    <h3 className="text-sm font-bold uppercase tracking-widest text-amber-800 mb-6 flex items-center">
+                  <div className="bg-[#fff8e7] p-6 md:p-8 rounded-xl shadow-sm border border-[#eaddc5] mt-6">
+                    <h3 className="text-sm font-bold uppercase tracking-widest text-[#8d6e63] mb-6 flex items-center">
                       <span className="mr-2">📖</span> Key Definitions
                     </h3>
                     <dl className="space-y-6">
                       {sec.definitions.map((def, i) => (
                         <div key={i} className="group">
                           {/* Term: Bold Serif */}
-                          <dt className="font-serif font-bold text-xl text-slate-900 mb-1 group-hover:text-blue-800 transition-colors">
+                          <dt className="font-serif font-bold text-2xl text-[#3e2723] mb-1">
                             {def.term}
                           </dt>
                           {/* Definition: Serif */}
-                          <dd className="font-serif text-slate-800 text-lg ml-4 border-l-4 border-amber-300 pl-5 py-1 leading-relaxed bg-white/50 rounded-r-md">
+                          <dd className="font-serif text-[#5d4037] text-lg ml-4 border-l-4 border-[#d7ccc8] pl-5 py-1 leading-relaxed bg-[#ffffff80] rounded-r-md">
                             {def.definition}
                           </dd>
                         </div>
@@ -772,22 +831,22 @@ export default function StudyGuideApp() {
                   </div>
                 )}
 
-                {/* EXAMPLES (Monospace & Italic Font) */}
+                {/* EXAMPLES (Frosted Foam / Monospace & Italic Font) */}
                 {sec.examples && sec.examples.length > 0 && (
-                  <div className="bg-slate-50 p-5 md:p-6 rounded-lg border-l-4 border-slate-400 shadow-inner">
-                    <h3 className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4 flex items-center">
+                  <div className="bg-[#efebe5] p-5 md:p-6 rounded-lg border-l-4 border-[#bcaaa4] shadow-inner mt-6">
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-[#8d6e63] mb-4 flex items-center">
                       <span className="mr-2">⚡</span> Examples in Practice
                     </h3>
                     <ul className="space-y-3">
                       {sec.examples.map((ex, i) => (
                         <li
                           key={i}
-                          className="font-mono text-sm md:text-base text-slate-700 italic flex items-start"
+                          className="font-mono text-[15px] md:text-base text-[#4e342e] italic flex items-start"
                         >
-                          <span className="text-slate-400 mr-3 not-italic">
+                          <span className="text-[#a1887f] mr-3 not-italic">
                             ➔
                           </span>
-                          <span>{ex}</span>
+                          <span className="leading-relaxed">{ex}</span>
                         </li>
                       ))}
                     </ul>
@@ -797,13 +856,13 @@ export default function StudyGuideApp() {
             ))}
           </div>
 
-          {/* EXAM TIPS SECTION */}
+          {/* EXAM TIPS SECTION (Cinnamon Highlight) */}
           {activeChapter.examTips && activeChapter.examTips.length > 0 && (
-            <div className="mt-16 bg-red-50 border-2 border-red-200 rounded-2xl p-8 shadow-sm">
-              <h2 className="text-2xl font-extrabold text-red-800 mb-4 flex items-center">
+            <div className="mt-16 bg-[#fbe9e7] border-2 border-[#ffccbc] rounded-2xl p-8 shadow-sm">
+              <h2 className="text-2xl font-extrabold text-[#bf360c] mb-4 flex items-center">
                 <span className="text-3xl mr-3">💡</span> Midterm Exam Tips
               </h2>
-              <ul className="list-disc list-inside space-y-3 text-red-900 text-lg">
+              <ul className="list-disc list-inside space-y-3 text-[#d84315] text-lg">
                 {activeChapter.examTips.map((tip, idx) => (
                   <li key={idx} className="font-medium leading-relaxed">
                     {tip}
@@ -813,20 +872,21 @@ export default function StudyGuideApp() {
             </div>
           )}
 
-          {/* END OF CHAPTER SUMMARY */}
+          {/* END OF CHAPTER SUMMARY (Rich Coffee Gradient) */}
           {activeChapter.chapterSummary &&
             activeChapter.chapterSummary.length > 0 && (
-              <div className="mt-16 bg-gradient-to-br from-blue-900 to-slate-900 text-white rounded-2xl p-8 md:p-10 shadow-xl">
-                <h2 className="text-3xl font-bold border-b border-blue-700 pb-4 mb-6 flex items-center">
-                  <span className="mr-3">📌</span> Chapter Cheat Sheet
+              <div className="mt-16 bg-gradient-to-br from-[#4e342e] to-[#3e2723] text-[#efebe5] rounded-2xl p-8 md:p-10 shadow-xl">
+                <h2 className="text-3xl font-bold border-b border-[#795548] pb-4 mb-6 flex items-center">
+                  <span className="mr-3 text-[#d7ccc8]">📌</span> Chapter Cheat
+                  Sheet
                 </h2>
-                <ul className="space-y-4 text-blue-100 text-lg">
+                <ul className="space-y-4 text-[#d7ccc8] text-lg">
                   {activeChapter.chapterSummary.map((sum, idx) => (
                     <li
                       key={idx}
                       className="flex items-start bg-white/5 p-3 rounded-lg hover:bg-white/10 transition-colors"
                     >
-                      <span className="text-green-400 mr-3 font-bold text-xl">
+                      <span className="text-[#a1887f] mr-3 font-bold text-xl">
                         ✓
                       </span>
                       <span className="leading-relaxed">{sum}</span>
@@ -835,6 +895,50 @@ export default function StudyGuideApp() {
                 </ul>
               </div>
             )}
+
+          {/* INTERACTIVE QUIZ SECTION */}
+          {activeChapter.quiz && activeChapter.quiz.length > 0 && (
+            <div className="mt-16 border-4 border-[#8d6e63] rounded-2xl p-8 shadow-md bg-white">
+              <h2 className="text-2xl font-extrabold text-[#4e342e] mb-6 flex items-center">
+                <span className="text-3xl mr-3">❓</span> Test Your Knowledge
+              </h2>
+              <p className="text-[#8d6e63] mb-6 italic">
+                Click "Reveal Answer" to check your understanding.
+              </p>
+
+              <div className="space-y-6">
+                {activeChapter.quiz.map((item, idx) => {
+                  const isRevealed =
+                    revealedAnswers[`${activeChapter.id}-${idx}`];
+                  return (
+                    <div
+                      key={idx}
+                      className="bg-[#f5f0e6] p-5 rounded-lg border border-[#d7ccc8]"
+                    >
+                      <p className="font-bold text-[#3e2723] text-lg mb-4">
+                        Q: {item.q}
+                      </p>
+
+                      {isRevealed ? (
+                        <div className="bg-[#fff8e7] p-4 rounded border-l-4 border-[#4caf50] mt-3 animate-fade-in">
+                          <p className="font-bold text-[#2e7d32]">
+                            A: {item.a}
+                          </p>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => toggleAnswer(activeChapter.id, idx)}
+                          className="bg-[#5d4037] text-white px-4 py-2 rounded shadow hover:bg-[#4e342e] transition-colors focus:outline-none focus:ring-2 focus:ring-[#8d6e63] font-medium"
+                        >
+                          Reveal Answer
+                        </button>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
